@@ -1,1 +1,45 @@
-<p>app header</p>
+<mat-toolbar>
+  <mat-icon>task</mat-icon>
+  <span class="spacer"></span>
+  <span>Anguar Todo App</span>
+
+  <span class="spacer"></span>
+
+  <a
+    href="https://github.com/TuserSheikh/angular-todo-app"
+    class="mat-button"
+    target="_blank"
+    rel="noopener"
+  >
+    <span class="mat-button-wrapper">
+      <img src="../../assets/GitHub-Mark-120px-plus.png" height="24" />
+      Source Code
+    </span>
+    <span class="mat-button-focus-overlay"></span>
+  </a>
+
+  <button mat-button [matMenuTriggerFor]="menu">
+    <span class="mat-button-wrapper">
+      About me
+      <mat-icon>arrow_drop_down</mat-icon>
+    </span>
+  </button>
+  <mat-menu #menu="matMenu">
+    <a
+      mat-menu-item
+      href="https://github.com/TuserSheikh"
+      target="_blank"
+      rel="noopener"
+    >
+      Github
+    </a>
+    <a
+      mat-menu-item
+      href="https://twitter.com/TuserSheikh"
+      target="_blank"
+      rel="noopener"
+    >
+      Twitter
+    </a>
+  </mat-menu>
+</mat-toolbar>
