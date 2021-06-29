@@ -1,0 +1,7 @@
+mat-sidenav {
+  width: 300px;
+}
+
+::ng-deep .mat-sidenav-container {
+  height: 90vh !important;
+}
