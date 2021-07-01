@@ -6,6 +6,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 const materialComponent = [
   MatButtonModule,
@@ -14,6 +19,11 @@ const materialComponent = [
   MatMenuModule,
   MatListModule,
   MatSidenavModule,
+  MatTabsModule,
+  MatTooltipModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
 ];
 
 @NgModule({
