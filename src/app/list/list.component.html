@@ -63,7 +63,11 @@
               <mat-list-item>
                 <div matLine>
                   <div style="float: left">
-                    <a class="mat-button">
+                    <a
+                      class="mat-button"
+                      [routerLink]="i.toString()"
+                      [routerLinkActive]="['is-active']"
+                    >
                       <span pan class="mat-button-wrapper">
                         {{ list.name }}
                       </span>
