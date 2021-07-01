@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ListModel } from './list.model';
 
 @Injectable({
@@ -12,10 +13,22 @@ export class ListService {
     new ListModel('Four', false),
   ];
 
-  constructor() {}
+  constructor(private _snackBar: MatSnackBar) {}
 
   addList(list: ListModel) {
-    this.lists.push(list);
+    let find = this.lists.find(
+      (l) => l.name.toLowerCase() === list.name.toLowerCase()
+    );
+
+    if (!find) {
+      this.lists.push(list);
+    } else {
+      this._snackBar.open(`list name '${find.name}' already exist`, 'close', {
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+        duration: 3000,
+      });
+    }
   }
 
   changeFavorite(index: number) {
