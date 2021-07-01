@@ -38,4 +38,8 @@ export class ListService {
   getLists() {
     return this.lists;
   }
+
+  removeList(index: number) {
+    this.lists.splice(index, 1);
+  }
 }

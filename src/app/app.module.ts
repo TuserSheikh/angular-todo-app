@@ -9,9 +9,11 @@ import { HeaderComponent } from './header/header.component';
 import { MaterialModule } from './material/material.module';
 import { ListComponent } from './list/list.component';
 import { DialogAddTaskComponent } from './list/dialog-add-task/dialog-add-task.component';
+import { TaskComponent } from './list/task/task.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, ListComponent, DialogAddTaskComponent],
+  declarations: [AppComponent, HeaderComponent, ListComponent, DialogAddTaskComponent, TaskComponent, PageNotFoundComponent],
 
   imports: [
     BrowserModule,

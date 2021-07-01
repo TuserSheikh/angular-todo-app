@@ -1,77 +1,96 @@
-<div class="mat-headline center">
-  <div style="margin-right: 20px">Task List</div>
-  <div>
-    <button
-      mat-mini-fab
-      style="background-color: gray"
-      (click)="dialogAddTask()"
-      matTooltip="Add New List"
-    >
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
-</div>
-<mat-tab-group>
-  <mat-tab label="All">
-    <mat-list>
-      <div *ngFor="let list of lists; index as i">
-        <mat-list-item>
-          <div matLine>
-            <div style="float: left">
-              <a class="mat-button">
-                <span pan class="mat-button-wrapper">
-                  {{ list.name }}
-                </span>
-                <span class="mat-button-focus-overlay"></span>
-              </a>
-            </div>
-            <div style="float: right">
-              <button
-                mat-icon-button
-                [color]="list.isFavorite ? 'warn' : ''"
-                (click)="changeFavorite(i)"
-                [matTooltip]="
-                  list.isFavorite ? 'Remove From Favorite' : 'Add To favorite'
-                "
-              >
-                <mat-icon>favorite</mat-icon>
-              </button>
+<!-- header -->
+<app-header></app-header>
+
+<!-- main content -->
+<mat-sidenav-container>
+  <!-- side nav - list area -->
+  <mat-sidenav mode="side" opened>
+    <div class="mat-headline center">
+      <div style="margin-right: 20px">Todo List</div>
+      <div>
+        <button
+          mat-mini-fab
+          style="background-color: gray"
+          (click)="dialogAddTask()"
+          matTooltip="Add New List"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </div>
+    <mat-tab-group>
+      <mat-tab label="All">
+        <mat-list>
+          <div *ngFor="let list of lists; index as i">
+            <mat-list-item>
+              <div matLine>
+                <div style="float: left">
+                  <a class="mat-button">
+                    <span pan class="mat-button-wrapper">
+                      {{ list.name }}
+                    </span>
+                    <span class="mat-button-focus-overlay"></span>
+                  </a>
+                </div>
+                <div style="float: right">
+                  <button
+                    mat-icon-button
+                    [color]="list.isFavorite ? 'warn' : ''"
+                    (click)="changeFavorite(i)"
+                    [matTooltip]="
+                      list.isFavorite
+                        ? 'Remove From Favorite'
+                        : 'Add To favorite'
+                    "
+                  >
+                    <mat-icon>favorite</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </div>
+        </mat-list>
+      </mat-tab>
+      <mat-tab label="Favorite">
+        <mat-list>
+          <div *ngFor="let list of lists; index as i">
+            <div *ngIf="list.isFavorite">
+              <mat-list-item>
+                <div matLine>
+                  <div style="float: left">
+                    <a class="mat-button">
+                      <span pan class="mat-button-wrapper">
+                        {{ list.name }}
+                      </span>
+                      <span class="mat-button-focus-overlay"></span>
+                    </a>
+                  </div>
+                  <div style="float: right">
+                    <button
+                      mat-icon-button
+                      color="warn"
+                      (click)="changeFavorite(i)"
+                      matTooltip="Remove From Favorite"
+                    >
+                      <mat-icon>favorite</mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </mat-list-item>
+              <mat-divider></mat-divider>
             </div>
           </div>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-      </div>
-    </mat-list>
-  </mat-tab>
-  <mat-tab label="Favorite">
-    <mat-list>
-      <div *ngFor="let list of lists; index as i">
-        <div *ngIf="list.isFavorite">
-          <mat-list-item>
-            <div matLine>
-              <div style="float: left">
-                <a class="mat-button">
-                  <span pan class="mat-button-wrapper">
-                    {{ list.name }}
-                  </span>
-                  <span class="mat-button-focus-overlay"></span>
-                </a>
-              </div>
-              <div style="float: right">
-                <button
-                  mat-icon-button
-                  color="warn"
-                  (click)="changeFavorite(i)"
-                  matTooltip="Remove From Favorite"
-                >
-                  <mat-icon>favorite</mat-icon>
-                </button>
-              </div>
-            </div>
-          </mat-list-item>
-          <mat-divider></mat-divider>
-        </div>
-      </div>
-    </mat-list>
-  </mat-tab>
-</mat-tab-group>
+        </mat-list>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-sidenav>
+
+  <!-- main content - task area -->
+  <mat-sidenav-content>
+    <app-task></app-task>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- footer -->
+<footer>This is copy right</footer>
