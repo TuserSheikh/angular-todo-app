@@ -16,16 +16,20 @@ export class TaskComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _listService: ListService
-  ) {
-    console.log('task component');
-  }
+  ) {}
 
   ngOnInit(): void {
     this._route.paramMap.subscribe((paramMap) => {
       const id = paramMap.get('id');
       if (id) {
         this.listId = +id;
-        this.logs = this._listService.getLogs(this.listId);
+        let listLength = this._listService.lists.length;
+
+        if (this.listId && this.listId < listLength && this.listId >= 0) {
+          this.logs = this._listService.getLogs(this.listId);
+        } else {
+          this._router.navigateByUrl('/list');
+        }
       }
     });
   }
