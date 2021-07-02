@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ListModel } from './list.model';
@@ -32,7 +33,7 @@ export class ListService {
   }
 
   changeFavorite(index: number) {
-    this.lists[index].changeFavorite();
+    this.lists[index].isFavorite = !this.lists[index].isFavorite;
   }
 
   getLists() {
@@ -41,5 +42,14 @@ export class ListService {
 
   removeList(index: number) {
     this.lists.splice(index, 1);
+  }
+
+  getLogs(index: number) {
+    return this.lists[index].logs;
+  }
+
+  addLog(index: number, log: string) {
+    let time = formatDate(Date.now(), 'medium', 'en-US');
+    this.lists[index].logs.push({ time, log });
   }
 }
