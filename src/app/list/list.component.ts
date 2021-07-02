@@ -43,6 +43,10 @@ export class ListComponent implements OnInit {
     this.listName = '';
   }
 
+  removeList(index: number) {
+    this._listService.removeList(index);
+  }
+
   changeFavorite(index: number) {
     this._listService.changeFavorite(index);
 
