@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogAddTaskComponent } from './dialog-add-task/dialog-add-task.component';
+import { DialogAddListComponent } from './dialog-add-list/dialog-add-list.component';
 import { ListModel } from './list.model';
 import { ListService } from './list.service';
 
@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
   }
 
   dialogAddTask() {
-    const dialogRef = this.dialog.open(DialogAddTaskComponent, {
+    const dialogRef = this.dialog.open(DialogAddListComponent, {
       data: {
         listName: this.listName,
       },
