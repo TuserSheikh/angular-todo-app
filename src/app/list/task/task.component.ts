@@ -25,7 +25,11 @@ export class TaskComponent implements OnInit {
         this.listId = +id;
         let listLength = this._listService.lists.length;
 
-        if (this.listId && this.listId < listLength && this.listId >= 0) {
+        if (
+          !isNaN(this.listId) &&
+          this.listId < listLength &&
+          this.listId >= 0
+        ) {
           this.logs = this._listService.getLogs(this.listId);
         } else {
           this._router.navigateByUrl('/list');

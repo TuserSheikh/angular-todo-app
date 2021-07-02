@@ -45,9 +45,10 @@ export class ListComponent implements OnInit {
 
   changeFavorite(index: number) {
     this._listService.changeFavorite(index);
+
     const logText = this._listService.lists[index].isFavorite
-      ? `List '${this.listName}' is add to favorite`
-      : `List '${this.listName}' is remove from favorite`;
+      ? `List '${this._listService.lists[index].name}' is add to favorite`
+      : `List '${this._listService.lists[index].name}' is remove from favorite`;
     this._listService.addLog(index, logText);
   }
 }
