@@ -4,18 +4,6 @@
     <button mat-mini-fab style="background-color: gray" matTooltip="Add Task">
       <mat-icon>add</mat-icon>
     </button>
-    <button
-      mat-mini-fab
-      style="background-color: gray"
-      matTooltip="List settings"
-      mat-button
-      [matMenuTriggerFor]="settings"
-    >
-      <mat-icon>settings</mat-icon>
-    </button>
-    <mat-menu #settings="matMenu">
-      <button mat-menu-item (click)="deleteList()">Delete</button>
-    </mat-menu>
   </div>
 </div>
 <div class="content">
