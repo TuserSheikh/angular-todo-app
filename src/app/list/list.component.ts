@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DialogAddListComponent } from './dialog-add-list/dialog-add-list.component';
+import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
 import { ListModel } from './list.model';
 import { ListService } from './list.service';
 
@@ -13,13 +15,18 @@ export class ListComponent implements OnInit {
   lists!: ListModel[];
   listName = '';
 
-  constructor(public dialog: MatDialog, private _listService: ListService) {}
+  constructor(
+    public dialog: MatDialog,
+    private _listService: ListService,
+    private _route: ActivatedRoute,
+    private _router: Router
+  ) {}
 
   ngOnInit(): void {
     this.lists = this._listService.getLists();
   }
 
-  dialogAddTask() {
+  dialogAddList() {
     const dialogRef = this.dialog.open(DialogAddListComponent, {
       data: {
         listName: this.listName,
@@ -34,6 +41,21 @@ export class ListComponent implements OnInit {
     });
   }
 
+  dialogRemoveList(index: number) {
+    const dialogRef = this.dialog.open(DialogConfirmComponent);
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this._listService.removeList(index);
+        const taskId = +this._route.snapshot.firstChild?.params.id;
+
+        if (taskId === index) {
+          this._router.navigateByUrl('/list');
+        }
+      }
+    });
+  }
+
   addList() {
     this._listService.addList(new ListModel(this.listName));
     this._listService.addLog(
@@ -41,10 +63,6 @@ export class ListComponent implements OnInit {
       `List '${this.listName}' has been created`
     );
     this.listName = '';
-  }
-
-  removeList(index: number) {
-    this._listService.removeList(index);
   }
 
   changeFavorite(index: number) {

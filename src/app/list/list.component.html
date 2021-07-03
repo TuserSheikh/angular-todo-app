@@ -11,7 +11,7 @@
         <button
           mat-mini-fab
           style="background-color: gray"
-          (click)="dialogAddTask()"
+          (click)="dialogAddList()"
           matTooltip="Add New List"
         >
           <mat-icon>add</mat-icon>
@@ -52,7 +52,7 @@
                   <button
                     mat-icon-button
                     style="color: crimson"
-                    (click)="removeList(i)"
+                    (click)="dialogRemoveList(i)"
                     matTooltip="Delete this list"
                   >
                     <mat-icon>delete</mat-icon>
