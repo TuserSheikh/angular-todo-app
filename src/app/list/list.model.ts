@@ -1,3 +1,5 @@
+import { TaskModel } from './task/task.model';
+
 export type LogType = {
   time: string;
   log: string;
@@ -6,6 +8,7 @@ export type LogType = {
 export class ListModel {
   name!: string;
   isFavorite!: boolean;
+  tasks: TaskModel[] = [];
   logs: LogType[] = [];
 
   constructor(name: string, isFavorite = false) {

@@ -2,6 +2,7 @@ import { formatDate } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ListModel } from './list.model';
+import { TaskModel } from './task/task.model';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +23,8 @@ export class ListService {
     );
 
     if (!find) {
-      this.lists.push(list);
+      const len = this.lists.push(list);
+      this.addLog(len - 1, `List '${list.name}' has been created`);
     } else {
       this._snackBar.open(`list name '${find.name}' already exist`, 'close', {
         horizontalPosition: 'center',
@@ -32,12 +34,27 @@ export class ListService {
     }
   }
 
+  addTask(index: number, task: TaskModel) {
+    this.lists[index].tasks.push(task);
+    this.addLog(index, `task '${task.name}' has been added`);
+  }
+
   changeFavorite(index: number) {
     this.lists[index].isFavorite = !this.lists[index].isFavorite;
+
+    const logText = this.lists[index].isFavorite
+      ? `List '${this.lists[index].name}' is add to favorite`
+      : `List '${this.lists[index].name}' is remove from favorite`;
+
+    this.addLog(index, logText);
   }
 
   getLists() {
     return this.lists;
+  }
+
+  getTasksByListId(index: number) {
+    return this.lists[index].tasks;
   }
 
   removeList(index: number) {

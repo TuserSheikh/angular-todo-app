@@ -58,19 +58,10 @@ export class ListComponent implements OnInit {
 
   addList() {
     this._listService.addList(new ListModel(this.listName));
-    this._listService.addLog(
-      this.lists.length - 1,
-      `List '${this.listName}' has been created`
-    );
     this.listName = '';
   }
 
   changeFavorite(index: number) {
     this._listService.changeFavorite(index);
-
-    const logText = this._listService.lists[index].isFavorite
-      ? `List '${this._listService.lists[index].name}' is add to favorite`
-      : `List '${this._listService.lists[index].name}' is remove from favorite`;
-    this._listService.addLog(index, logText);
   }
 }

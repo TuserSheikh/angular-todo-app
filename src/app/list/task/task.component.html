@@ -1,7 +1,12 @@
 <div class="mat-headline center">
   <div style="margin-right: 20px">Task List</div>
   <div>
-    <button mat-mini-fab style="background-color: gray" matTooltip="Add Task">
+    <button
+      mat-mini-fab
+      style="background-color: gray"
+      matTooltip="Add Task"
+      (click)="dialogTask()"
+    >
       <mat-icon>add</mat-icon>
     </button>
   </div>
@@ -10,7 +15,25 @@
   <div class="column">
     <div class="row">
       <h2 class="center">Todo</h2>
-      <mat-card class="example-card" style="background-color: lightsalmon">
+
+      <mat-card
+        class="example-card"
+        *ngFor="let task of tasks"
+        [style.backgroundColor]="task.bgColor"
+      >
+        <mat-card-header>
+          <mat-card-title>{{ task.name }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content *ngIf="task.details">
+          <p>{{ task.details }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+
+      <!-- <mat-card class="example-card" style="background-color: LightBlue">
         <mat-card-header>
           <mat-card-title>Computer Programming</mat-card-title>
         </mat-card-header>
@@ -27,7 +50,7 @@
           <button mat-button>SHARE</button>
         </mat-card-actions>
       </mat-card>
-      <mat-card class="example-card" style="background-color: lightskyblue">
+      <mat-card class="example-card" style="background-color: LightPink">
         <mat-card-header>
           <mat-card-title>Computer Programming</mat-card-title>
         </mat-card-header>
@@ -43,13 +66,13 @@
           <button mat-button>LIKE</button>
           <button mat-button>SHARE</button>
         </mat-card-actions>
-      </mat-card>
+      </mat-card> -->
     </div>
   </div>
   <div class="column">
     <div class="row">
       <h2 class="center">Doing</h2>
-      <mat-card class="example-card" style="background-color: lightcoral">
+      <mat-card class="example-card" style="background-color: LightSteelBlue">
         <mat-card-header>
           <mat-card-title>Computer Programming</mat-card-title>
         </mat-card-header>
@@ -71,7 +94,7 @@
   <div class="column">
     <div class="row">
       <h2 class="center">Done</h2>
-      <mat-card class="example-card" style="background-color: lightcyan">
+      <mat-card class="example-card" style="background-color: LightGray">
         <mat-card-header>
           <mat-card-title>Computer Programming</mat-card-title>
         </mat-card-header>
@@ -88,10 +111,7 @@
           <button mat-button>SHARE</button>
         </mat-card-actions>
       </mat-card>
-      <mat-card
-        class="example-card"
-        style="background-color: lightgoldenrodyellow"
-      >
+      <mat-card class="example-card" style="background-color: Thistle">
         <mat-card-header>
           <mat-card-title>Computer Programming</mat-card-title>
         </mat-card-header>
@@ -101,6 +121,21 @@
             breeds of dog from Japan. A small, agile dog that copes very well
             with mountainous terrain, the Shiba Inu was originally bred for
             hunting.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-card class="example-card" style="background-color: Tan">
+        <mat-card-header>
+          <mat-card-title>Computer Programming</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz
+            breeds of dog from Japan.
           </p>
         </mat-card-content>
         <mat-card-actions>

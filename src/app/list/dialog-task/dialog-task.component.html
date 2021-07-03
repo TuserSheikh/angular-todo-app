@@ -1,0 +1,64 @@
+<h1 mat-dialog-title>Add New Task</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill" style="width: 100%">
+    <mat-label>Task Name</mat-label>
+    <input matInput [(ngModel)]="data.name" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" style="width: 100%">
+    <mat-label>Details</mat-label>
+    <textarea
+      matInput
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      cdkAutosizeMinRows="3"
+      cdkAutosizeMaxRows="10"
+      [(ngModel)]="data.details"
+    ></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" style="width: 100%">
+    <mat-label>Current Status</mat-label>
+    <mat-select [(value)]="data.status">
+      <mat-option [value]="0">Todo</mat-option>
+      <mat-option [value]="1">Doing</mat-option>
+      <mat-option [value]="2">Done</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <label id="task-color">Pick your favorite season</label>
+  <mat-radio-group
+    aria-labelledby="task-color"
+    class="task-color"
+    [(ngModel)]="data.bgColor"
+  >
+    <mat-radio-button class="task-radio-button" value="lightGray">
+      <div class="color-box lightGray"></div>
+    </mat-radio-button>
+    <mat-radio-button class="task-radio-button" value="lightSteelBlue">
+      <div class="color-box lightSteelBlue"></div>
+    </mat-radio-button>
+    <mat-radio-button class="task-radio-button" value="lightPink">
+      <div class="color-box lightPink"></div>
+    </mat-radio-button>
+    <mat-radio-button class="task-radio-button" value="lightBlue">
+      <div class="color-box lightBlue"></div>
+    </mat-radio-button>
+    <mat-radio-button class="task-radio-button" value="thistle">
+      <div class="color-box thistle"></div>
+    </mat-radio-button>
+    <mat-radio-button class="task-radio-button" value="tan">
+      <div class="color-box tan"></div>
+    </mat-radio-button>
+  </mat-radio-group>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button
+    mat-button
+    [mat-dialog-close]="data"
+    [disabled]="data.name.length === 0"
+  >
+    Ok
+  </button>
+</div>

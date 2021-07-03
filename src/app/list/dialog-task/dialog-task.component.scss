@@ -1,0 +1,51 @@
+.task-color {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.task-radio-button {
+  margin: 1px;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color: black !important;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: black !important; /*inner circle color change*/
+}
+
+::ng-deep.mat-radio-button.mat-accent.mat-radio-checked
+  .mat-radio-outer-circle {
+  border-color: black !important; /*outer ring color change*/
+}
+
+.color-box {
+  width: 70px;
+  height: 30px;
+}
+
+.lightGray {
+  background-color: lightGray;
+}
+
+.lightSteelBlue {
+  background-color: lightSteelBlue;
+}
+
+.lightPink {
+  background-color: lightpink;
+}
+
+.lightBlue {
+  background-color: lightBlue;
+}
+
+.thistle {
+  background-color: thistle;
+}
+
+.tan {
+  background-color: tan;
+}

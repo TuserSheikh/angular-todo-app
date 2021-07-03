@@ -12,6 +12,7 @@ import { DialogAddListComponent } from './list/dialog-add-list/dialog-add-list.c
 import { TaskComponent } from './list/task/task.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DialogConfirmComponent } from './list/dialog-confirm/dialog-confirm.component';
+import { DialogTaskComponent } from './list/dialog-task/dialog-task.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { DialogConfirmComponent } from './list/dialog-confirm/dialog-confirm.com
     TaskComponent,
     PageNotFoundComponent,
     DialogConfirmComponent,
+    DialogTaskComponent,
   ],
 
   imports: [
