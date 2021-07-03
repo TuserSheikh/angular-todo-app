@@ -61,6 +61,11 @@ export class ListService {
     this.lists.splice(index, 1);
   }
 
+  removeTask(listIndex: number, taskIndex: number) {
+    const deletedItems = this.lists[listIndex].tasks.splice(taskIndex, 1);
+    this.addLog(listIndex, `Task '${deletedItems[0].name}' has been deleted`);
+  }
+
   getLogs(index: number) {
     return this.lists[index].logs;
   }

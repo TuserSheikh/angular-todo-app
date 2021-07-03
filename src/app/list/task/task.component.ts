@@ -5,6 +5,7 @@ import { ListService } from '../list.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogTaskComponent } from '../dialog-task/dialog-task.component';
 import { TaskModel, TaskStatus } from './task.model';
+import { DialogConfirmComponent } from '../dialog-confirm/dialog-confirm.component';
 
 @Component({
   selector: 'app-task',
@@ -50,9 +51,14 @@ export class TaskComponent implements OnInit {
     });
   }
 
-  deleteList() {
-    this._listService.removeList(this.listId);
-    this._router.navigateByUrl('/list');
+  dialogRemoveTask(taskIndex: number) {
+    const dialogRef = this.dialog.open(DialogConfirmComponent);
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this._listService.removeTask(this.listId, taskIndex);
+      }
+    });
   }
 
   dialogTask() {
