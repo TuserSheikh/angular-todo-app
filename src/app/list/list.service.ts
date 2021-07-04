@@ -61,6 +61,11 @@ export class ListService {
     this.lists.splice(index, 1);
   }
 
+  editTask(listIndex: number, taskIndex: number, task: TaskModel) {
+    this.lists[listIndex].tasks[taskIndex] = task;
+    this.addLog(listIndex, `Task '${task.name}' has been changed`);
+  }
+
   removeTask(listIndex: number, taskIndex: number) {
     const deletedItems = this.lists[listIndex].tasks.splice(taskIndex, 1);
     this.addLog(listIndex, `Task '${deletedItems[0].name}' has been deleted`);

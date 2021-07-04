@@ -61,19 +61,57 @@ export class TaskComponent implements OnInit {
     });
   }
 
-  dialogTask() {
+  dialogEditTask(taskIndex: number) {
+    this.taskData = { ...this.tasks[taskIndex] };
     const dialogRef = this.dialog.open(DialogTaskComponent, {
-      data: this.taskData,
+      data: {
+        task: this.taskData,
+        isEditMode: true,
+      },
       width: '500px',
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
+      this.taskData = {
+        name: '',
+        details: '',
+        status: TaskStatus.todo,
+        bgColor: 'lightGray',
+      };
       if (result) {
         const task = new TaskModel(
-          result.name,
-          result.details,
-          result.bgColor,
-          result.status
+          result.task.name,
+          result.task.details,
+          result.task.bgColor,
+          result.task.status
+        );
+        this._listService.editTask(this.listId, taskIndex, task);
+      }
+    });
+  }
+
+  dialogTask() {
+    const dialogRef = this.dialog.open(DialogTaskComponent, {
+      data: {
+        task: this.taskData,
+        isEditMode: false,
+      },
+      width: '500px',
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      this.taskData = {
+        name: '',
+        details: '',
+        status: TaskStatus.todo,
+        bgColor: 'lightGray',
+      };
+      if (result) {
+        const task = new TaskModel(
+          result.task.name,
+          result.task.details,
+          result.task.bgColor,
+          result.task.status
         );
         this._listService.addTask(this.listId, task);
       }

@@ -2,7 +2,12 @@
 <div mat-dialog-content>
   <mat-form-field appearance="fill" style="width: 100%">
     <mat-label>Task Name</mat-label>
-    <input matInput [(ngModel)]="data.name" required />
+    <input
+      matInput
+      [(ngModel)]="data.task.name"
+      [disabled]="data.isEditMode"
+      required
+    />
   </mat-form-field>
 
   <mat-form-field appearance="fill" style="width: 100%">
@@ -13,13 +18,13 @@
       #autosize="cdkTextareaAutosize"
       cdkAutosizeMinRows="3"
       cdkAutosizeMaxRows="10"
-      [(ngModel)]="data.details"
+      [(ngModel)]="data.task.details"
     ></textarea>
   </mat-form-field>
 
   <mat-form-field appearance="fill" style="width: 100%">
     <mat-label>Current Status</mat-label>
-    <mat-select [(value)]="data.status">
+    <mat-select [(value)]="data.task.status">
       <mat-option [value]="0">Todo</mat-option>
       <mat-option [value]="1">Doing</mat-option>
       <mat-option [value]="2">Done</mat-option>
@@ -30,7 +35,7 @@
   <mat-radio-group
     aria-labelledby="task-color"
     class="task-color"
-    [(ngModel)]="data.bgColor"
+    [(ngModel)]="data.task.bgColor"
   >
     <mat-radio-button class="task-radio-button" value="lightGray">
       <div class="color-box lightGray"></div>
@@ -57,7 +62,7 @@
   <button
     mat-button
     [mat-dialog-close]="data"
-    [disabled]="data.name.length === 0"
+    [disabled]="data.task.name.length === 0"
   >
     Ok
   </button>

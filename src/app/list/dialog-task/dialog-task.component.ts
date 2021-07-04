@@ -10,8 +10,15 @@ import { TaskModel } from '../task/task.model';
 })
 export class DialogTaskComponent implements OnInit {
   constructor(
-    public dialogRef: MatDialogRef<TaskModel>,
-    @Inject(MAT_DIALOG_DATA) public data: TaskModel
+    public dialogRef: MatDialogRef<{
+      task: TaskModel;
+      isEditMode: boolean;
+    }>,
+    @Inject(MAT_DIALOG_DATA)
+    public data: {
+      task: TaskModel;
+      isEditMode: boolean;
+    }
   ) {}
 
   ngOnInit(): void {}

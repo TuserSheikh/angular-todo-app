@@ -28,8 +28,8 @@
           <p>{{ task.details }}</p>
         </mat-card-content>
         <mat-card-actions>
+          <button mat-button (click)="dialogEditTask(i)">EDIT</button>
           <button mat-button (click)="dialogRemoveTask(i)">DELETE</button>
-          <button mat-button>SHARE</button>
         </mat-card-actions>
       </mat-card>
 
